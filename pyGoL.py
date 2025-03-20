@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import curses
 import getopt
@@ -78,7 +78,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, 'h:w:t:', ['height=','width=', 'tick='])
     except getopt.GetoptError:
-        print 'pyGoL.py -h <height> -w <width> -t <tick>'
+        print('pyGoL.py -h <height> -w <width> -t <tick>')
         sys.exit(2)
     for opt, arg in opts:
         if opt in ('-h' '--height'):
