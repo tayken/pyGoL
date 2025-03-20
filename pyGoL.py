@@ -4,7 +4,7 @@ import curses
 import getopt
 import random
 import sys
-import time
+
 
 # Conway's Game of Life universe
 class universe:
@@ -12,7 +12,7 @@ class universe:
         self.width = width
         self.height = height
         # Randomly generate seed status
-        self.aliveNow  = [[bool(random.getrandbits(1)) for x in range(width)] for y in range(height)]
+        self.aliveNow = [[bool(random.getrandbits(1)) for x in range(width)] for y in range(height)]
         self.aliveNext = [[None for x in range(width)] for y in range(height)]
         self.stdscr = curses.initscr()
         curses.halfdelay(tick)
@@ -47,10 +47,10 @@ class universe:
 
         # If our universe is not evolving, randomly start a new one
         if self.aliveNow == self.aliveNext:
-            self.aliveNow  = [[bool(random.getrandbits(1)) for x in range(width)] for y in range(height)]
+            self.aliveNow = [[bool(random.getrandbits(1)) for x in range(self.width)] for y in range(self.height)]
         # Otherwise swap now with next, clock ticked once
         else:
-            self.aliveNow  = self.aliveNext
+            self.aliveNow = self.aliveNext
         self.aliveNext = [[None for x in range(self.width)] for y in range(self.height)]
 
     def dispCells(self):
@@ -68,15 +68,16 @@ class universe:
         curses.curs_set(True)
         curses.endwin()
 
+
 def main(argv):
     # Default arguments
-    width  = 133
+    width = 133
     height = 41
     tick = 2
 
     # Now try to parse them
     try:
-        opts, args = getopt.getopt(argv, 'h:w:t:', ['height=','width=', 'tick='])
+        opts, args = getopt.getopt(argv, 'h:w:t:', ['height=', 'width=', 'tick='])
     except getopt.GetoptError:
         print('pyGoL.py -h <height> -w <width> -t <tick>')
         sys.exit(2)
@@ -97,6 +98,7 @@ def main(argv):
         if char != curses.ERR:
             break
     my.cleanup()
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])
