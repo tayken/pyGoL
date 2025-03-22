@@ -20,13 +20,13 @@ class universe:
 
     def calcNeighbors(self, x, y):
         return self.aliveNow[(y-1) % self.height][(x-1) % self.width] \
-             + self.aliveNow[(y-1) % self.height][(x) % self.width]   \
-             + self.aliveNow[(y-1) % self.height][(x+1) % self.width] \
-             + self.aliveNow[(y) % self.height][(x-1) % self.width]   \
-             + self.aliveNow[(y) % self.height][(x+1) % self.width]   \
-             + self.aliveNow[(y+1) % self.height][(x-1) % self.width] \
-             + self.aliveNow[(y+1) % self.height][(x) % self.width]   \
-             + self.aliveNow[(y+1) % self.height][(x+1) % self.width]
+            + self.aliveNow[(y-1) % self.height][(x) % self.width]   \
+            + self.aliveNow[(y-1) % self.height][(x+1) % self.width] \
+            + self.aliveNow[(y) % self.height][(x-1) % self.width]   \
+            + self.aliveNow[(y) % self.height][(x+1) % self.width]   \
+            + self.aliveNow[(y+1) % self.height][(x-1) % self.width] \
+            + self.aliveNow[(y+1) % self.height][(x) % self.width]   \
+            + self.aliveNow[(y+1) % self.height][(x+1) % self.width]
 
     def nextRound(self):
         # Calculate results for next round
